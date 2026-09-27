@@ -12,14 +12,14 @@ import java.util.List;
 
 public class ProductController {
 
-    // Controller cần ProductService.
-    public final ProductService productService;
-
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
-//    @Autowired
-//    private ProductService productService;
+//    // Controller cần ProductService.
+//    public final ProductService productService;
+//
+//    public ProductController(ProductService productService) {
+//        this.productService = productService;
+//    }
+    @Autowired
+    private ProductService productService;
 
     @GetMapping
     public List<Product> getAllProducts() {
