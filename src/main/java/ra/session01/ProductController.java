@@ -1,9 +1,7 @@
 package ra.session01;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,12 +15,12 @@ import java.util.List;
 
 
 //Bài 3
- @RequestMapping("/products") //Controller này phụ trách URL bắt đầu bằng /products.
+// @RequestMapping("/products") //Controller này phụ trách URL bắt đầu bằng /products.
 // ví dụ: http://localhost:8080/products
 //giống như địa chỉ/khu vực mà Controller phụ trách.
 
 // BÀi 4
-//@RequestMapping("/api/products")
+@RequestMapping("/api/products")
 
 
 public class ProductController {
@@ -42,4 +40,22 @@ public class ProductController {
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
     }
+
+    @PostMapping
+    public Product createProduct(@RequestBody Product product) {
+        return productService.createProduct(product);
+    }
+
+    @PutMapping("/{id}")
+    public Product updateProduct(
+            @PathVariable int id,
+            @RequestBody Product product) {
+        return productService.updateProduct(id, product);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable int id) {
+        productService.deleteProduct(id);
+    }
 }
+
